@@ -1,6 +1,37 @@
+% Data can be found i Project_6data.mat
 %%
 clc 
 clear all
+
+
+% Problem: Power Plant Data Analysis for 2D Linear Regression Surface
+
+% You are provided with data from a power plant that records the hourly electrical energy output (in MW),
+% which is the dependent variable, along with the hourly average temperature and average relative humidity,
+% both of which are independent variables.
+
+% Your task is to write a MATLAB program that computes the 2D linear regression plane using the two independent variables
+% (temperature and humidity) to predict the power output.
+
+% Part (a):
+% Use the "normal equation" method to calculate the regression plane.
+% This will involve a 3x3 matrix.
+
+% Part (b):
+% Use MATLAB's direct method for solving the system, employing the 'ML divide' operator.
+
+% Part (c):
+% Use the "inverse of the matrix" method for solving the regression plane.
+% The form to use is: ([A]T)[A][x] = ([A]T)Y, and hence, x = (([A]T)[A])^−1[A]TY
+
+% For each of the above methods, calculate and report the following metrics:
+% - r2 (coefficient of determination)
+% - Sr (standard deviation of the regression)
+% - Sy/x (standard error of the estimate)
+
+% Additionally, create a 3D plot displaying the regression plane with the variables (temperature and humidity)
+% on the x and y axes, and the power output on the z-axis. You can adjust the visibility by modifying the plot settings, either manually or via code
+
 
 %% Part a: 2-D regression using normal equations
 data = load('C:\Users\DELL\Documents\MATLAB\HW6_PowerPlant_Data.mat');
