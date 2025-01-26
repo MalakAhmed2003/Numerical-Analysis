@@ -6,3 +6,19 @@ This repository is aimed at helping Engineers and Mathematicians with different 
 The code is written in [Matlab] and designed to have detailed comments that are efficient and easy to understand, with examples and documentation to guide users.
 
 
+Projects:
+The projects/ directory contains example scripts showing how to use the different algorithms:
+
+Project 0: Getting used to basic Matlab functions.
+Project 1: -Root Finding of Quadratic Equations
+           -Taylor Series Expansion
+           -Different Error Types Calculation           
+Project 2: -More of Taylor Series Expansion:
+             -Forward Difference Approximation Method
+           -First-order Error Calculation
+           -Condition Number Calculation
+           -Root finding Techniques:
+             -Bisection Method
+             -False-position Method
+
+
