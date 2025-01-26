@@ -1,7 +1,23 @@
 %%
 clc
 clear all
-%% Question 1: Part a
+% Question 1
+
+% Problem: Finding the Minimum of a Function Using Newton's Method
+
+% You are provided with the following mathematical function:
+% f(x) = 4 - 9x - 2x^2 - 8x^3 + 2x^4
+
+% Part (a):
+% Create a plot for the function f(x) to visually inspect its shape.
+% From the graph, identify the value of x and the corresponding f(x) at the point where the function reaches its minimum.
+
+% Part (b):
+% Develop a MATLAB program to find the minimum of the function using Newton's Method.
+% Begin the iteration with an initial guess of x0 = 1, and apply a stopping criterion where the relative error is less than ϵs = 0.5%.
+
+
+%%Question 1: Part a
 % Defining the function to be graphed
 f = @(x) 4 - 9*x - 2*(x.^2) - 8*(x.^3) + 2*(x.^4);  
 % Asigning the range of x that the we will graph the function on
@@ -64,6 +80,33 @@ end
 % already defined
 x_minimum = newton_optimization(f, x_0)
 y = double(subs(f,x_minimum))
+
+
+
+% Question 2
+
+% Problem: Finding the Maxima of a Function Using Golden-Section Search
+
+% The function you need to work with is given as:
+% f(x) = 1 / ((x - 0.8)^2 + 0.03) + 1 / ((x - 2)^2 + 0.05) - 7
+
+% Part (a):
+% Create a plot of the function to visually inspect its behavior.
+% From the graph, identify the locations of the global and local maximum points.
+
+% Part (b):
+% Write a MATLAB program that uses the Golden-Section Search method to find the maximum of the function.
+% Start with the interval Xlower = 0 and Xupper = 1.5, and apply the method to find the global maximum.
+% Set the stopping criterion to ϵs = 0.00001%.
+
+% Part (c):
+% Modify the initial search bounds so that the algorithm converges to the local maximum that you identified in the graph.
+% Keep the stopping criterion as ϵs = 0.00001%.
+
+% Part (d):
+% On the same plot from part (a), clearly mark the positions of both the local and global maxima.
+
+
 %% Question 2: Part a
 
 % Defining the function to be graphed
@@ -210,6 +253,28 @@ ylabel('f(x)');
 title('Plot of f(x)');
 grid on;
 %% Question 3:
+
+% Problem: Finding the Maximum Using a Random Search Method
+
+% You are tasked with finding the maximum value of the function:
+% f(x, y) = 2x + 3y - 13x^2 - 7y^2 + xy
+
+% The search space is bounded by:
+% x: -1.5 to 1.5
+% y: -3 to 3
+
+% Part (a):
+% Implement a Random Search algorithm to explore the function within the given bounds and identify the maximum value.
+% Track and update the best solution found so far (which includes both the value of the function f(x, y) and the coordinates).
+% This best solution is updated only when a superior solution is found.
+
+% Part (c):
+% Visualize the results by creating a 3D surface plot of the function over the specified region and mark the maximum found by the algorithm on this plot.
+
+% Part (d):
+% Additionally, create a plot showing how the best function value improves over the number of iterations.
+% The x-axis of this plot will represent the number of guesses, while the y-axis will show the best value encountered up until each guess.
+
 
 %Defining the function symbolically
 syms x y
