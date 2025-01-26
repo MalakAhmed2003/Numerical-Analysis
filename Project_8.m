@@ -1,8 +1,34 @@
+% Data is available in Project_8data.mat
 %%
 clc
 clear all
 
 %% Question 1
+
+% Problem Statement:
+% Use the univariate search method to find the minimum of the function:
+
+% f(x, y) = (x - 3)^2 + (y - 2)^2 - xy
+
+% Start the optimization with the initial values x = 3 and y = 3. 
+% The final answer should be accurate to three significant digits.
+
+% 1. Contour Plot: 
+% Plot the function on a 2D contour plot with the bounds for both x and y 
+% set to the interval [2, 7].
+
+% Mark the starting point with a black filled circle.
+
+% Mark the guesses made during the optimization in the X direction 
+% with red filled circles.
+
+% Mark the guesses made during the optimization in the Y direction 
+% with blue filled circles.
+
+% Finally, mark the minima obtained from your method with a green filled circle.
+
+
+
 % Define the function that we need to optimize in terms of x and y
 syms x y
 z = ((1.5* x - 2.5)^2) + ((y + 2)^2) - x*y;
@@ -84,7 +110,13 @@ plot(x_min, y_min, 'ro', 'MarkerSize', 4, 'MarkerFaceColor', 'g');
 xlabel('X')
 ylabel('Y')
 hold off;
+
+
+
+
 %% Questtion 2
+% Use the steepest descent method to optimize the function, finding the minimum:
+% f(x, y) = (x - 3)^2 + (y - 2)^2 - xy
 
 % Defining Newton's method that will be used to optimize the step h, the
 % step we walk along the gradient direction
