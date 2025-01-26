@@ -2,6 +2,27 @@
 clc
 clear all
 %% Question 1
+
+% Part A:
+% Write a custom Gauss Elimination Solver in MATLAB to solve an NxN system of equations. 
+% This means you should implement the algorithm yourself rather than using any built-in Gauss Elimination solver in MATLAB. 
+
+% Part B:
+% Consider the following system of linear equations represented in matrix form:
+
+% A = [1 4 9 16; 
+%      4 9 16 25; 
+%      9 16 25 36; 
+%      16 25 36 49.0001]
+
+% and
+
+% X = [x1; x2; x3; x4] 
+% b = [4; 400; 40000; 400000000]
+
+% Apply your Gauss Elimination code (from Part A) to solve this system for the vector x. 
+% Once you have the solution, compare it against the result obtained by using MATLAB’s backslash operator (x = A\b).
+
 % Part A
 function [x_mat, temp_coefficient_mat, temp_sol_mat] = Gaussian_elimination_solver(coefficient_mat, sol_mat, n)
     if (det(coefficient_mat) == 0)
@@ -70,6 +91,43 @@ disp('Error in each value of the calculated x_matrix:');
 disp(x_relative_error)
 
 %% Question 2
+
+
+% Problem: LU Decomposition using Gaussian Elimination
+
+% You are given the following matrix A:
+
+% A = [8 6 1;
+%      10 6 14;
+%      11 15 14];
+
+% Part (a):
+% Using the Gaussian elimination solver you developed in the previous problem (for solving an NxN system of equations), 
+% write a MATLAB program or function that accepts an NxN matrix A as input and performs LU decomposition. 
+% Your function should return the lower triangular matrix L and the upper triangular matrix U.
+
+% After performing the LU decomposition, verify that L * U equals A for the given matrix A.
+
+% Part (b):
+% After completing the LU decomposition, compare the matrices L and U obtained from your function 
+% with the ones produced by MATLAB’s built-in `lu` function. 
+% If the results do not match, explain the differences. 
+% (Consult MATLAB’s help documentation for the `lu` function to better understand the expected output.)
+
+% Part (c):
+% Suppose you are given the vector b such that the equation A * x = b holds. 
+% Solve for x using only the matrices L and U that you obtained in part (a) (do not use A directly).
+% Specifically, first solve the system L * d = b for d, and then solve U * x = d for x.
+
+% Given the vector b:
+
+% b = [19;
+%      18;
+%      7];
+
+
+
+
 % Part a
 
 function [L, U] = L_U_decomposer(coefficient_mat, n)
@@ -141,7 +199,34 @@ d = L\b;
 x = U\d
 % checking the value of x using the backslash operator
 x_check = A\b
+
+
+
 %% Question 3
+
+% Problem: Matrix Condition Number and Ill-Conditioned Matrices
+
+% You are given the following matrix M:
+
+% M = [1 4 9 16 25;
+%      4 9 16 25 36;
+%      9 16 25 36 49;
+%      16 25 36 49 64;
+%      25 36 49 64 81];
+
+% Part (a):
+% Calculate the condition number of the matrix M using the L2 norm.
+
+% Part (b):
+% Calculate the condition number of the matrix M using the row-sum norm.
+
+% Part (c):
+% Determine the number of digits of precision that will be lost in each of the two cases above, refer to chater 10 in the book.
+
+% Part (d):
+% Demonstrate two simple alternative methods for determining if a matrix is ill-conditioned or well-conditioned 
+% without using any norms or condition numbers.
+
 
 M =[1 4 9 16 25;
     4 9 16 25 36;
