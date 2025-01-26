@@ -55,3 +55,10 @@ Project 9:   -2D Optimization
 Project 10:  -System of Differential Equations Engineering Problems:
                -Temperature Flow Example
                
+### Note:
+For details about the math behind the algorithms used in the projects, I would refer to:
+Numerical Methods for Engineers
+Book by Raymond Canale and Steven C. Chapra
+
+### Note:
+These projects are examples of the homeworks assigned in Computaional Methods course and the provided codes are my solutions, so if you think there could be any better solution or any recommendation, I am so open for suggestions.
