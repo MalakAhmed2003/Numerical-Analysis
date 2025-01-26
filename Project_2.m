@@ -1,7 +1,8 @@
 %%
 clc
 clear all
-%% Chapter 4: part1
+%%Chapter 4: part1
+%{ hh}%
 a = -3;
 h = -1.5;
 error = zeros(1,4);
