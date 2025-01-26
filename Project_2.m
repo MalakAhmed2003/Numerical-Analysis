@@ -152,7 +152,8 @@ data = {
 T = cell2table(data, 'VariableNames', {'Function Number', 'Condition Number', 'Interpretation'});
 disp(T);
 
-%% Chapter 5: part a
+%% Question 2
+%% part a
 % Define the range and function
 x = -100:1:100; 
 f = @(x) 10 + 45.4*x - 10*(x.^2) + 45.4*(x.^3) - 9.7*(x.^4) + 4*(x.^5); 
@@ -172,7 +173,8 @@ plot(roots, f(roots), 'ro', 'MarkerSize', 8, 'DisplayName', 'Intersection Points
 legend show; 
 hold off; 
 
-%% Chapter 5: part b
+%% Question 2
+%% part b
 % Define the function
 f = @(x) 10 + 45.4*x - 10*(x.^2) + 45.4*(x.^3) - 9.7*(x.^4) + 4*(x.^5);
 
@@ -216,7 +218,8 @@ T = array2table(results, 'VariableNames', {'Iteration', 'x_l', 'x_u', 'Root'});
 % Display the table
 disp(T);
 
-%% Chapter 5: part c
+%% Question 2
+%% part c
 
 % Define the function
 f = @(x) 10 + 45.4*x - 10*(x.^2) + 45.4*(x.^3) - 9.7*(x.^4) + 4*(x.^5);
