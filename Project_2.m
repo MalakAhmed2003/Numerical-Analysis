@@ -1,8 +1,29 @@
 %%
 clc
 clear all
-%%Chapter 4: part1
-%{ hh}%
+%%Question 1
+%{
+1. Taylor Series Expansion for Approximation:
+Given the function f(x)=−25x3+8x2+7x+20f(x) = -25x^3 + 8x^2 + 7x + 20f(x)=−25x3+8x2+7x+20, use the Taylor Series expansions of orders 0, 1, 2, and 3 to approximate f(−4.5)f(-4.5)f(−4.5) with a base point at x=−3x = -3x=−3. Calculate the true percent relative error ϵt\epsilon_tϵt​ for each approximation.
+2. Forward, Backward, and Centered Difference Approximations:
+For the function f(x)=−25x3+8x2+7x+20f(x) = -25x^3 + 8x^2 + 7x + 20f(x)=−25x3+8x2+7x+20 from the previous question, estimate the first derivative at x=−4.5x = -4.5x=−4.5 using:
+Forward Difference approximation with an error of O(h)O(h)O(h),
+Backward Difference approximation with an error of O(h)O(h)O(h),
+Centered Difference approximation with an error of O(h2)O(h^2)O(h2).
+Use a step size of h=0.5h = 0.5h=0.5 for all approximations. Compare your results with the true value of the derivative and use percent relative error to evaluate the accuracy. Interpret your findings based on the remainder term of the Taylor series expansion.
+3. Error Estimation for Parachutist Velocity:
+The velocity of a falling parachutist is given by the equation:
+v(t)=gmc(1−e−cmt)v(t) = \frac{gm}{c} \left( 1 - e^{-\frac{c}{m}t} \right)v(t)=cgm​(1−e−mc​t)
+Using a first-order error analysis, estimate the error in the velocity v(t)v(t)v(t) at t=4t = 4t=4, where the parameters are g=9.8g = 9.8g=9.8, m=50m = 50m=50, and c=9.5±3c = 9.5 \pm 3c=9.5±3.
+4. Condition Number Analysis:
+Evaluate and interpret the condition numbers for the following functions at the given points:
+(a) f(x)=∣x−1∣+1f(x) = |x - 1| + 1f(x)=∣x−1∣+1 for x=1.0001x = 1.0001x=1.0001
+(b) f(x)=e−xf(x) = e^{-x}f(x)=e−x for x=9x = 9x=9
+(c) f(x)=x2+1−xf(x) = \sqrt{x^2 + 1} - xf(x)=x2+1​−x for x=200x = 200x=200
+(d) f(x)=ex−1xf(x) = \frac{e^x - 1}{x}f(x)=xex−1​ for x=0.01x = 0.01x=0.01
+}%
+%%part1
+
 a = -3;
 h = -1.5;
 error = zeros(1,4);
