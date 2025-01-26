@@ -1,32 +1,5 @@
-%% Data
-%%  PreferVegemite CityPopulation
-             194300 1815000
-             192700 1805000
-             193500 1795000
-             179900 1793000
-             179100 1765000
-             180700 1755000
-             183100 1740000
-             177500 1740000
-             176700 1735000
-             176220 1720000
-             175100 1725000
-             165500 1715000
-             163900 1710000
-             163900 1710000
-             163100 1705000
-             161500 1645000
-             151100 1655000
-             117996 1650000
-             149500 1645000
-             152700 1635000
-             154300 1630000
-             138300 1620000
-             128540 1605000
-             126188 1610000
-             128380 1605000
-             153980 1615000
-             155100 1625000
+%% Data is available in Project_5data.mat file
+
 clc
 clear all
 %% Question 1
@@ -224,7 +197,7 @@ Error_between_the_backslash_and_our_solver = (x_backslash - x_using_Gauss_solver
 
 
 % Loading the data
-data_loaded = importdata('HW5_P3data.mat');
+data_loaded = importdata('Project_5data.mat');
 n = length(data_loaded.x);
 I = ones(27,1);
 
