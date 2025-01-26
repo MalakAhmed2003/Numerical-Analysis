@@ -30,6 +30,39 @@
 clc
 clear all
 %% Question 1
+
+% Problem: Vector and Matrix Norm Calculations
+
+% For the following vectors and matrices (Note: You may use MATLAB's built-in "norm" functions for Question 1):
+
+% V1 = [-1.3 1.4 3.2];
+% V2 = [2.8 2.4 3.1];
+
+% M1 = [2.3 2.2 7.3;
+%       3.9 7.9 -3.3;
+%       7.7 3.5 -0.5];
+
+% M2 = [-1.6 2.8 9.2;
+%       2.5 7.9 -1.3;
+%       6.4 3.3 -0.5];
+
+% Part (a):
+% Calculate the difference between the two vectors, V1 and V2, and quantify their magnitude using the following norm measures.
+
+% i. Calculate the L1 norm of the vector difference.
+% ii. Calculate the L2 norm of the vector difference.
+% iii. Calculate the Infinity norm of the vector difference.
+
+% Part (b):
+% Calculate the difference between the two matrices, M1 and M2, and quantify their magnitude using the following norm measures.
+
+% i. Calculate the L1 norm of the matrix difference.
+% ii. Calculate the L2 norm of the matrix difference.
+% iii. Calculate the Frobenius norm of the matrix difference.
+% iv. Calculate the Infinity norm of the matrix difference.
+
+
+% Question 1
 % Part a
 V_1 = [-1.3, 1.4, 3.2];
 V_2 = [2.8, 2.4, 3.1];
@@ -74,6 +107,34 @@ T = cell2table(data, 'VariableNames', {'Norm Type', 'Norm Value', 'Comments'});
 disp(T);
 
 %% Question 2
+
+% Problem: Gauss-Seidel Method for Solving NxN System of Equations
+
+% Part (a):
+% Write a MATLAB program to solve an NxN system of equations of the form A * x = b, 
+% implementing the Gauss-Seidel algorithm. 
+% Use a stopping criterion such that the worst-case (the vector component with the largest approximate error) 
+% answer is correct to 3 significant digits. 
+% Ensure that you implement a maximum iteration count in your loop, check for the Gauss-Seidel convergence criteria.
+% Part (b):
+% Use the code you wrote to compute the solution, and then check your solution by computing 
+% the solution using MATLAB’s backslash operator. 
+% Show the error between the true solution and the solution obtained from the Gauss-Seidel method.
+
+% Given matrix A:
+% A = [20 4 2 3;
+%      1 34 8 6;
+%      3 4 18 2;
+%      9 8 5 69];
+
+% Given vector b:
+% b = [5;
+%      2;
+%     -7;
+%     12];
+
+
+
 function [x] = Gauss_seidel_solver(A, b)
     n = length(b);
     x = zeros(n, 1); % Initializing the solutions as zeros
@@ -143,6 +204,25 @@ Error_between_the_backslash_and_our_solver = (x_backslash - x_using_Gauss_solver
 
 
 %% Question 3
+
+% Problem: Analyzing Population and Vegemite Preference Data
+
+% You have data on the population of several cities, 
+% and the number of individuals from each city who prefer Vegemite over other spreadable food products.
+
+% Part (a):
+% Write a MATLAB program to calculate the equation of the best-fitting straight line 
+% (1D linear regression) for the given X and Y data using the "Normal Equations" method.
+
+% Part (b):
+% Generate a plot that displays both the original data points and the computed regression line on the same graph, 
+% allowing you to visually assess how well the regression line fits the data.
+
+% Part (c):
+% Calculate and print the standard error of the estimate (Sy/x), and provide the values for the regression coefficients a0 and a1.
+
+
+
 % Loading the data
 data_loaded = importdata('HW5_P3data.mat');
 n = length(data_loaded.x);
