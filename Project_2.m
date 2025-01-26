@@ -2,27 +2,27 @@
 clc
 clear all
 %%Question 1
-%%
-1. Taylor Series Expansion for Approximation:
-Given the function f(x)=−25x3+8x2+7x+20f(x) = -25x^3 + 8x^2 + 7x + 20f(x)=−25x3+8x2+7x+20, use the Taylor Series expansions of orders 0, 1, 2, and 3 to approximate f(−4.5)f(-4.5)f(−4.5) with a base point at x=−3x = -3x=−3. Calculate the true percent relative error ϵt\epsilon_tϵt​ for each approximation.
-2. Forward, Backward, and Centered Difference Approximations:
-For the function f(x)=−25x3+8x2+7x+20f(x) = -25x^3 + 8x^2 + 7x + 20f(x)=−25x3+8x2+7x+20 from the previous question, estimate the first derivative at x=−4.5x = -4.5x=−4.5 using:
-Forward Difference approximation with an error of O(h)O(h)O(h),
-Backward Difference approximation with an error of O(h)O(h)O(h),
-Centered Difference approximation with an error of O(h2)O(h^2)O(h2).
-Use a step size of h=0.5h = 0.5h=0.5 for all approximations. Compare your results with the true value of the derivative and use percent relative error to evaluate the accuracy. Interpret your findings based on the remainder term of the Taylor series expansion.
-3. Error Estimation for Parachutist Velocity:
-The velocity of a falling parachutist is given by the equation:
-v(t)=gmc(1−e−cmt)v(t) = \frac{gm}{c} \left( 1 - e^{-\frac{c}{m}t} \right)v(t)=cgm​(1−e−mc​t)
-Using a first-order error analysis, estimate the error in the velocity v(t)v(t)v(t) at t=4t = 4t=4, where the parameters are g=9.8g = 9.8g=9.8, m=50m = 50m=50, and c=9.5±3c = 9.5 \pm 3c=9.5±3.
-4. Condition Number Analysis:
-Evaluate and interpret the condition numbers for the following functions at the given points:
-(a) f(x)=∣x−1∣+1f(x) = |x - 1| + 1f(x)=∣x−1∣+1 for x=1.0001x = 1.0001x=1.0001
-(b) f(x)=e−xf(x) = e^{-x}f(x)=e−x for x=9x = 9x=9
-(c) f(x)=x2+1−xf(x) = \sqrt{x^2 + 1} - xf(x)=x2+1​−x for x=200x = 200x=200
-(d) f(x)=ex−1xf(x) = \frac{e^x - 1}{x}f(x)=xex−1​ for x=0.01x = 0.01x=0.01
-%%
-%%part1
+
+%1. Taylor Series Expansion for Approximation:
+%Given the function f(x)= -25x^3 + 8x^2 + 7x + 20, use the Taylor Series expansions of orders 0, 1, 2, and 3 to approximate f(−4.5) with a base point at x=−3. Calculate the true percent relative error for each approximation.
+%2. Forward, Backward, and Centered Difference Approximations:
+%For the function f(x)= -25x^3 + 8x^2 + 7x + 20 from the previous question, estimate the first derivative at x=−4.5using:
+%Forward Difference approximation with an error of O(h),
+%Backward Difference approximation with an error of O(h),
+%Centered Difference approximation with an error of O(h^2).
+%Use a step size of h=0.5 for all approximations. Compare your results with the true value of the derivative and use percent relative error to evaluate the accuracy. Interpret your findings based on the remainder term of the Taylor series expansion.
+%3. Error Estimation for Parachutist Velocity:
+%The velocity of a falling parachutist is given by the equation:
+%v(t)=gm(1−e^(−ct/m))/c
+%Using a first-order error analysis, estimate the error in the velocity v(t) at t=4t, where the parameters are g=9.8, m=50, and c=9.5±3.
+%4. Condition Number Analysis:
+%Evaluate and interpret the condition numbers for the following functions at the given points:
+%(a) f(x)= ∣x−1∣+1 for x=1.0001
+%(b) f(x)= e^(−x) for x=9
+%(c) f(x)= (x^2 + 1)^(.5) - x for x=200
+%(d) f(x)= (e^x - 1)/x for x=0.01
+
+%%Question 1: part1
 
 a = -3;
 h = -1.5;
@@ -59,7 +59,7 @@ data = {
 };
 T = cell2table(data, 'VariableNames', {'Order', 'f(-4.5)', 'Relative True Error'});
 disp(T);
-%% Chapter 4: Part 2
+%% Question 1: Part 2
 f = @(x) -1*25*(x^3) + 8*(x^2) + 7*x + 20;
 f_1 = @(x) -1*75*(x^2) + 16*x + 7; %first derivative
 h = .5;
@@ -89,7 +89,7 @@ data = {
     };
 T = cell2table(data, 'VariableNames', {'Method Used', 'first derivative at -4.5', 'Relative True Error'});
 disp(T);
-%% Chapter 4: part 3
+%% Question 1: part 3
 delta_c = 3;
 % defining the function of velocity in terms of m, g, t and c
 syms t c m g
@@ -102,7 +102,7 @@ abs_dv_by_dc = abs(double(subs(dv_by_dc, {g, m, c, t}, {9.8, 50, 9.5, 4})));
 delta_v = delta_c * abs_dv_by_dc;
 fprintf('The error of v = %f', abs_dv_by_dc)
 
-%% Chapter 4: Part 4
+%% Question 1: Part 4
 
 x_a = 1.0001;
 x_b = 9;
@@ -153,6 +153,12 @@ T = cell2table(data, 'VariableNames', {'Function Number', 'Condition Number', 'I
 disp(T);
 
 %% Question 2
+
+%Find the real roots of the function f(x)= 10 + 45.4x - 10x^2 + 45.4x^3 - 9.7x^4 + 4x^5
+%(a) Graphical Method: Use MATLAB to graph the function and visually identify the real roots.
+%(b) Bisection Method: Use the bisection method to determine the highest root, with a stopping criterion of ϵs=10%. Use the initial guesses x_l=−0.5 and x_u = 0.
+%(c) False-Position Method: Perform the same computation as in part (b), but apply the False-Position method with a stopping criterion of ϵs=0.1. Again, use the initial guesses x_l = -0.5 x_u = 0.
+
 %% part a
 % Define the range and function
 x = -100:1:100; 
