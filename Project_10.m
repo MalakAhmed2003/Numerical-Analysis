@@ -1,5 +1,44 @@
 clc;
 clear all; 
+
+% Problem:
+          
+   _______B______
+% |              |
+% |              |
+% |              |
+% | A            |C
+% |              |
+% |              |_____D_______
+% |                            |
+% |                            | E
+% |___________F________________|
+
+% You have an L-shaped thin plate with the following material properties and dimensions:
+% - Thermal conductivity (k) = 4000 W/m·K
+% - Specific heat capacity (c) = 700 J/kg·K
+% - Density (ρ) = 4717 kg/m^3
+% The dimensions of the plate are as follows:
+% - A = 1m, F = 1m, B = 0.2m, E = 0.6m, C = 0.4m, D = 0.8m
+
+% Boundary conditions:
+% - The top edge (B) is maintained at a constant temperature of 150°C.
+% - The right edge (E) is maintained at a constant temperature of 50°C.
+% - The other edges (A, F, C, D) are insulated, meaning no heat can flow across these edges.
+% - The initial temperature of all elements in the plate is 0°C.
+% - The upper and lower surfaces are also insulated, so the solution is 2-dimensional only.
+
+% Task:
+% (a) Solve for the steady-state temperature distribution of the plate:
+% - Solve for the steady-state temperature map, where the temperature does not change with time.
+% - Plot the steady-state temperature distribution using a color plot or image.
+
+% (b) Solve for the time-varying temperature solution for the plate:
+% - Start at t = 0, with all nodes (except the fixed-temperature nodes) initialized at 0°C.
+% - Run the simulation until the temperature converges to the steady state.
+% - Plot the temperature distribution at four time instances: t = 25s, t = 150s, t = 800s, and at the final time when the solution has converged.
+
+
 %% Part a
 % We can firstly solve the problem as if it is a square and then when
 % updating the values of the temperature, we skip he empty region
