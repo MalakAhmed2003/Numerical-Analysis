@@ -9,7 +9,7 @@ The code is written in [Matlab] and designed to have detailed comments that are 
 Projects:
 The projects/ directory contains example scripts showing how to use the different algorithms:
 
-Project 0: Getting used to basic Matlab functions.
+##Project 0: Getting used to basic Matlab functions.
 Project 1: -Root Finding of Quadratic Equations
            -Taylor Series Expansion           
            -Different Error Types Calculation           
