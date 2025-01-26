@@ -1,7 +1,15 @@
 %% 
 clear all
 clc
-%% Question 1: part 1
+%% Question 1
+
+% Find the Highest Real Root of f(x) = x^3 - 13.1x^2 + 47x - 34.8:
+% 1. Graphical Method: Use MATLAB to plot the function and visually identify the highest real root. 
+% 2. Fixed-Point Iteration Method: Apply the Fixed-Point Iteration method until the approximation error is less than 0.1%. Start with an initial value of x_0 = 8. 
+% 3. Newton-Raphson Method: Use the Newton-Raphson method to find the root, with a maximum of 6 iterations and an initial guess of x_0 = 8. 
+% 4. Secant Method: Apply the Secant method to find the root, with a maximum of 6 iterations. Use the initial guesses x−1=20x_{-1} = 20x−1​=20 and x_0 = 8.
+
+%%part 1
 % Define the function
 f = @(x) (x.^3) - 13.1*(x.^2) + 47*x - 34.8;
 
@@ -111,7 +119,16 @@ end
 T = array2table(results, 'VariableNames', {'Iteration number(i)', 'x_i'});
 disp(T);
 
-%% Question 2: Part B :1
+%% Question 2
+
+% 1. **Gaussian Elimination Solver**: Write a MATLAB function to solve a system of linear equations using the Gaussian Elimination method. Your solver should be able to handle both a 3x3 matrix and a general NxN system of equations. 
+% **Note**: In Homework 3, you have the option to implement the solver for just a 3x3 matrix, but in Homework 4, you'll be required to extend it to an NxN system. 
+% Writing the solver for the NxN system now will help you get ahead for the next assignment.
+
+% 2. **Apply the Solver**: Use the Gaussian Elimination code you developed in part 1 to solve the system of equations from part A. 
+% The system is in the form Ax = b, where you need to find x. Once you've solved the system using your MATLAB code, verify the results by comparing the computed solution with the one obtained manually. 
+
+%Part B :1
 % 3*3 system of linear equations solver(Gaussian Elemination method)
 
 function [x_mat] = Guassian_elemination_solver(coefficient_mat, sol_mat)
@@ -132,6 +149,48 @@ else
     x_mat(1) = (temp_sol_mat(1)- (x_mat(3)*temp_coefficient_mat(1,3)) - (x_mat(2)*temp_coefficient_mat(1,2)))/temp_coefficient_mat(1,1);
 end
 end
+
+
+% n*n system of linear equations solver(Gaussian Elemination method)
+function [x_mat, temp_coefficient_mat, temp_sol_mat] = Gaussian_elimination_solver_n(coefficient_mat, sol_mat, n)
+    if (det(coefficient_mat) == 0)
+        disp('The system has no solution.');
+        x_mat = [];
+        temp_coefficient_mat = [];
+        temp_sol_mat = [];
+        return;
+    else 
+        x_mat = zeros(n, 1);
+        temp_coefficient_mat = coefficient_mat;
+        temp_sol_mat = sol_mat;
+        
+        % Gaussian elimination part
+        for j = 1:n
+            for i = (j+1):n
+                % Calculating the elimination factor
+                factor = temp_coefficient_mat(i, j) / temp_coefficient_mat(j, j);
+                
+                % Updatating the rows of the coefficient matrix after
+                % operating on them
+                temp_coefficient_mat(i, j:n) = temp_coefficient_mat(i, j:n) - factor * temp_coefficient_mat(j, j:n);
+                
+                % Updating the solution matrix as well
+                temp_sol_mat(i) = temp_sol_mat(i) - factor * temp_sol_mat(j);
+            end
+        end
+        
+        % Back substitution part
+        x_mat(n) = temp_sol_mat(n) / temp_coefficient_mat(n, n);
+        for k = n-1:-1:1
+            x_mat(k) = temp_sol_mat(k);
+            for z = k+1:n
+                x_mat(k) = x_mat(k) - (x_mat(z) * temp_coefficient_mat(k, z));
+            end
+            x_mat(k) = x_mat(k) / temp_coefficient_mat(k, k);
+        end
+    end
+end
+
 % Part B:2
 %sol_matrix_b refers to the b matrix in the right hand side of the
 %equation, coefficient_mat refers to the A matrix in the left hand side of
@@ -144,7 +203,49 @@ disp(solution_matrix)
 % comparing the values we got quantitatively by trying bcksubstitution in
 % the original equation and comparing results
 b_matrix_check = coefficient_mat*x_matrix
-%% Question 3: Part a
+
+
+%% Question 3
+
+% A Hilbert Matrix is a type of square matrix that is known for being ill-conditioned. 
+% Each element Hij in a Hilbert Matrix is defined as:
+% Hij = 1 / (i + j - 1)
+
+% a) Generate a 10x10 Hilbert matrix and a 5x5 Hilbert matrix. 
+% You can use a for-loop or a built-in MATLAB function to create them. 
+% Name the matrices H10 and H5, respectively, and display them in your solution. 
+
+% b) Create the column vectors X10_actual and X5_actual:
+% X10_actual = [1; 2; 3; ...; 10]
+% X5_actual = [1; 2; ...; 5]
+% You can easily generate these vectors using shorthand notation [1:n]’.
+
+% c) Using the Hilbert matrices H10 and H5, compute the column vectors:
+% B10 = H10 * X10_actual
+% B5 = H5 * X5_actual
+% Then display the values of B10 and B5.
+
+% d) Compute the condition numbers for both Hilbert matrices (H10 and H5) 
+% and display the results.
+
+% e) With the Hilbert matrices H10 and H5 and the column vectors B10 and B5, 
+% solve for X using two methods: the backslash operator and the matrix inverse.
+% Solve for X using the backslash operator (X_backslash) and also by using the inverse of the matrix (X_inverse).
+
+% f) Calculate and display the errors for both methods and for both Hilbert matrices. 
+% Use the following formulas for the errors:
+% norm(X_actual - X_from_backslash) and norm(X_actual - X_from_inverse).
+% Compare the results for both methods and matrices. 
+% Determine which method is more accurate and explain why one matrix produces smaller errors.
+
+% g) Using tic/toc, measure the time taken by your computer to solve the system 
+% using each of the two methods and compare the timings. 
+% NOTE: When measuring execution time, it’s recommended to use a for-loop with enough iterations 
+% to make the execution last several tens of milliseconds. This helps ensure more accurate timing 
+% by averaging out any small fluctuations caused by factors like disk access and pre-computation.
+
+
+% Part a
 
 % Define a function that creates the ill-conditioned Matrices
 function [mat] = Hilbert_Matrix_creator(n)
@@ -228,4 +329,3 @@ err_inverse_10 = norm(X10actual - X_from_inverse_10)
      X_from_inverse_10 = inv(H10) * B10;
  end
  time_inverse_10 = toc/num_iterations
-
