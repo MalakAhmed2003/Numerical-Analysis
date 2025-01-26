@@ -1,1 +1,174 @@
+clc
+%% Question1: Vectors
+%{  (a) How can you generate a vector of even integers ranging from 6 to 32, inclusive, without manually typing the values? Show the code to achieve this.
+
+(b) If you need to create a vector containing 11 numbers that are evenly spaced between 0.95 and 3.3, what MATLAB function would you use? Demonstrate how to apply this function.
+
+(c) Consider two vectors, A = [2.3 3.3 4.3 5.3 6.3 7.3] and B = [1 2 0 5 6]. What is the result and reasoning for each of the following expressions?
+
+i. A(B(1))
+
+ii. A(B(2))
+
+iii. A(logical(B))
+
+iv. A(4:end)
+
+v. A([2 3 4])
+
+vi. A([1:3, 6])
+
+vii. How can you create a new vector C that includes all elements of A, except for the 3rd one? Use indexing to construct C.
+}%
+
+% Part a
+vec1 = [6:2:32]
+
+% Part b
+%creating a vector of evenly spaced values using linspace() function
+vec2 = linspace(.95, 3.3, 11)
+A=[2.3 3.3 4.3 5.3 6.3 7.3], B=[1 2 0 5 6];
+
+% Part c1
+%B(1) returns the first element of the array B, which is 1 and then A(1) returns the first
+%element of the array A, which is 2.3
+A(B(1))
+
+% Part c2
+%B(2) returns the first element of the array B, which is 2 and then A(2) returns the first
+%element of the array A, which is 3.3
+A(B(2))
+
+
+% Part c3
+A(logical(B))
+
+
+% Part c4
+% 4:end returns the indicies from the fourth element in A till the end of
+% array, which is the sixth element
+A(4:end)
+
+% Part c5
+% Returns the elements of undicies 2, 3 aand 4 from the array A
+A([2 3 4])
+
+% Part c6
+% Returns the elements of undicies starting at the first element till the third
+% and skips the fourth and fifth and then returns the sixth as well.
+A([1:3, 6])
+
+% Part c7
+C = A([1:2, 4:6])
+
+
+%% Question2: Matrices
+%{
+ (a) How would you write the code to create a matrix with 3 columns and 12 rows, where all the elements are set to 1?
+(b) Write a simple piece of code that reshapes the vector A = [1 2 3 4 5 6 7 8 9] into the matrix A = [1 2 3; 4 5 6; 7 8 9].
+(c) Given the vectors A = [1 2 3] and B = [4 5 6], what is the result and why when you perform the operation A * B'?
+(d) For the vectors A = [1 2 3] and B = [4 5 6], what is the result and why when you perform the operation A' * B?
+(e) What happens when you perform A * B with the vectors A = [1 2 3] and B = [4 5 6]? Explain why.
+(f) Given a large matrix A = rand(36, 54), how can you use indexing (without loops) to create a new matrix B that includes all the columns of A but omits the 12th row?
+}%
+
+% Part a
+mat1 = ones(12, 3)
+
+% Part b
+D = [1 2 3 4 5 6 7 8 9];
+D = reshape(D, 3, 3);
+D = D'
+
+% Part c
+E=[1 2 3], F=[4 5 6]; 
+E * F' % This applies matrix multiplication between the matrix E and F-transpose (1*4 + 2*5 + 3*6)= 32
+
+
+% Part d
+ E' * F 
+
+% Part e
+ 
+%A*B % this gives an error because it requires a matrix multiplication
+% between two matrices of in consistent sizes, E of 1*3, and F of 1*3
+
+% Part f
+G = rand(36,54)
+H = G([1:11, 13:end], :)
+
+%% Question3: Loops and IF statements
+%{
+ (a) Write a code snippet that creates a FOR loop where the index variable i starts at 4 and increases by 3 with each iteration. The loop should run for a total of 5 iterations before stopping.
+(b) Write a code snippet that creates a WHILE loop where the index variable i starts at 9 and decreases by 2 with each iteration. The loop should run for 4 iterations before terminating.
+(c) Write an IF-ELSE statement that checks if a variable i is equal to 3. If true, it should set x = 5. If i is not equal to 3, the statement should check if i is greater than 7. If that condition is true, it should set x = 7. If neither condition is true, set x = 0.
+}%
+
+% Part a
+for i = 4:3: 18
+    disp('Hi')
+end
+
+% Part b
+j = 9;
+while j > 1
+    disp('Hello')
+    j = j-2;
+end
+
+% Part c
+if i == 3
+    x = 5
+else
+    if i > 7
+        x = 7
+    else 
+        x = 0
+    end
+end
+
+%% Question4: Functions and Scripts
+%{
+(a) Develop a brief script that displays the numbers 1 to 5 in the console when run.
+(b) Write a function that, given two integer arguments a and b, prints all the integers starting from a up to b in the console.
+}%
+
+% Part a
+for s = 1: 1:5
+    %disp(s)
+end
+% Part b
+function PrintIntegers(a, b)
+    for c = a: 1: b
+        disp(c)
+    end
+end
+PrintIntegers(1, 5)
+
+%% Question5: Plotting
+%{
+(a) Create a plot that shows the cosine of x over the interval from 0 to 2π2\pi2π.
+(b) Write a code snippet that produces a graph with two y-axes: one displaying sin(x) on the left and the other displaying cos(x) on the right, with x ranging from 0 to 2π2\pi2π.
+}%
+
+% Part a
+z = 0:pi/200:2*pi;
+y1 = cos(z);
+plot(z,y1)
+ylabel('cos(z)')
+xlabel('z')
+
+
+% Part b
+y1 = cos(z);
+y2 = sin(z);
+yyaxis left;
+plot(z,y2)
+ylabel('sin(z)')
+xlabel('z')
+
+hold on;
+yyaxis right;
+plot(z,y1)
+ylabel('cos(z)')
 
