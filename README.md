@@ -39,6 +39,9 @@ Project 7:   -Different Optimization Techniques:
                -Newton's Method
                -Golden Search Method
                -Radom Search Method
+Project 8:   -2D Optimization
+               -Built-in Matlab Functions
+               -Multi-objective Optimizat
 Project 9:   -2D Optimization
                -Built-in Matlab Functions
                -Multi-objective Optimization Solver
@@ -49,4 +52,6 @@ Project 9:   -2D Optimization
                -Euler's Method
                -Midpoint Method
              -Solving a System of Differential Equations
+Project 10:  -System of Differential Equations Engineering Problems:
+               -Temperature Flow Example
                
