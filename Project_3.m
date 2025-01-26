@@ -125,8 +125,11 @@ disp(T);
 % **Note**: In Homework 3, you have the option to implement the solver for just a 3x3 matrix, but in Homework 4, you'll be required to extend it to an NxN system. 
 % Writing the solver for the NxN system now will help you get ahead for the next assignment.
 
-% 2. **Apply the Solver**: Use the Gaussian Elimination code you developed in part 1 to solve the system of equations from part A. 
-% The system is in the form Ax = b, where you need to find x. Once you've solved the system using your MATLAB code, verify the results by comparing the computed solution with the one obtained manually. 
+% 2. **Apply the Solver**: Use the Gaussian Elimination code you developed in part 1 to solve the system of equations:
+% |6 10 16  | | x_1 |    | 6   |
+% |-18 10 24| | x_2 | =  | -30 |
+% |24 50 60 | | x_3 |    | 38  |
+% The system is in the form Ax = b, where you need to find x. 
 
 %Part B :1
 % 3*3 system of linear equations solver(Gaussian Elemination method)
