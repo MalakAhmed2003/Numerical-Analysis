@@ -1,4 +1,4 @@
-```matlab
+
 clc
 clear
 %% Question 1
@@ -129,4 +129,4 @@ while approx_error > error_criterion
     cos_x = new_cos_x;
 end
 disp(num_terms)
-```
+
