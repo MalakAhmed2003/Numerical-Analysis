@@ -20,5 +20,8 @@ Project 2: -More of Taylor Series Expansion:
            -Root finding Techniques:
              -Bisection Method
              -False-position Method
-
+Project 3:  -Root finding Techniques:
+             -Fixed-point Method
+             -Newton-Raphson Method 
+             -Secant Method
 
