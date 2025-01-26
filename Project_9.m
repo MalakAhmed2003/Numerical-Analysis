@@ -1,6 +1,87 @@
 %%
 clc
 clear all
+%Question 1
+
+% You are a mountain climber exploring a terrain defined by the following height function, 
+% where the absolute value is denoted as |x|:
+
+% f(x1, x2) = 1000 * (|x1 - 1.6|) + |x2 - 1.6| + 1 + 2000 * (|x1 - 2.1|) + |x2 - 2.1| + 1 + 
+% 2000 * (|x1 - 1.1|) + |x2 + 3.1| + 1 + 4000 * (|x1 - 0.1|) + |x2 - 0.1| + 1
+
+% Part 1: Graphical Analysis
+% 1. Surface Plot and Visual Maxima Detection
+% - Create a 3D surface plot of the terrain function f(x1, x2).
+% - Analyze the plot to visually determine the global and local maxima. Note: 
+%   You will need to define your own bounds for the x1 and x2 range to ensure that all maxima are observed.
+
+% 2. Listing of Maxima
+% - Based on your visual inspection of the surface plot, list the approximate locations (x1, x2) for 
+%   all local maxima and the global maximum.
+
+% Part 2: Finding Maxima Using fminsearch()
+% 1. Maxima Search with fminsearch()
+% - Write a program that uses MATLAB's fminsearch() function to find the local maxima of the function.
+% - Note: Recall that minimizing the negative of a function is equivalent to maximizing the original function.
+
+% 2. Plot Maxima on the Surface
+% - After identifying the maxima, plot the surface again and mark the found maxima using red dots or circles.
+
+% 3. Listing Maxima from fminsearch()
+% - Output the locations (x1, x2) and corresponding values f(x1, x2) for the maxima found using fminsearch().
+
+% Part 3: Constrained Maximization Using fmincon()
+% 1. Constrained Maximization
+% - The terrain is subject to certain property restrictions, which can be represented as the following inequalities:
+%   - 2x2 - 1.2x1 <= -2
+%   - x2 + 0.6x1 <= 1.5
+
+% 2. Optimization with Constraints
+% - Use the fmincon() function to find the optimal solution (x1, x2) that maximizes the terrain height 
+%   while satisfying the above constraints.
+
+% 3. Plot the Constrained Maximum
+% - Plot the constrained maximum on the surface plot you generated earlier, showing it as a distinct point on the graph.
+
+% 4. Value of the Constrained Maximum
+% - Output the value of the function f(x1, x2) at the constrained maximum location.
+
+% Part 4: Energy Minimization and Multi-Objective Optimization
+% 1. Energy Function
+% - The energy you expend during your hike is given by the following function:
+%   g(x1, x2) = 300 * ((x1 - 4.5)^2 + (x2 - 1.2)^2) ^ 1.7
+% - Your goal is to minimize the energy function g(x1, x2), but you also want to maximize the terrain height 
+%   function f(x1, x2). You cannot do both simultaneously, so you need to find an optimal balance.
+
+% 2. Sampling Points
+% - Create a matrix with values for x1, x2, f(x1, x2), and g(x1, x2). 
+%   The matrix should represent a systematic sampling of possible values for x1 and x2. 
+%   The goal is to capture enough combinations of x1 and x2 to understand the behavior of both functions.
+
+% 3. Pareto Front
+% - Create a Pareto plot with g(x1, x2) on the x-axis and f(x1, x2) on the y-axis. 
+%   The Pareto front represents the set of non-dominated solutions where both functions reach an optimal trade-off.
+% - Highlight the points on the Pareto front, indicating the trade-offs between maximizing the terrain height and minimizing the energy expended.
+
+% Part 5: Weighted-Sum Approach for Multi-Objective Optimization
+% 1. Weighted-Sum Objective Function
+% - Suppose you care twice as much about maximizing the terrain height f(x1, x2) as you do about minimizing 
+%   the energy function g(x1, x2). Define a weight vector wt = [2/3, 1/3], which represents the relative importance 
+%   of the two objectives.
+% - Form a new objective function t(x1, x2) as a weighted sum of the two objectives:
+%   t(x1, x2) = wt1 * f(x1, x2) + wt2 * g(x1, x2)
+
+% 2. Unconstrained Optimization with fminsearch()
+% - Use the new objective function t(x1, x2) to find the best solution to the combined problem of maximizing 
+%   terrain height while minimizing energy expenditure. This can be done using the fminsearch() function, ignoring any constraints.
+
+% 3. Constrained Optimization with fmincon()
+% - Use the new objective function t(x1, x2) along with the property restrictions to find the optimal solution 
+%   using fmincon(). Plot the optimal solution on the surface plot of t(x1, x2), and output the optimal values for x1, x2, and t(x1, x2).
+
+
+
+
 %% Question 1: Part 1
 
 % Defining the height function that will be optimized
@@ -468,6 +549,42 @@ legend({'Objective Function Surface', 'Constraint 1', 'Constraint 2', 'Optimal P
 grid on;
 
 
+% Question 2
+
+% The total mass of a variable density rod is given by the integral equation:
+% m = ∫[0 to L] ρ(l) * Ac(l) dl
+% where:
+%   - m is the mass of the rod
+%   - ρ(l) is the density of the rod at position l along its length
+%   - Ac(l) is the area of the cross-section of the rod at position l
+%   - L is the total length of the rod
+
+% You are provided with a 10m long rod with the following data measured for different positions along the rod:
+%   - x(m) represents the distance along the rod
+%   - ρ (g/m³) represents the density at each position
+%   - Ac (cm²) represents the cross-sectional area at each position
+
+% The data provided is as follows:
+%   x(m): 0, 2, 3, 4, 6, 8, 10
+%   ρ (g/m³): 4.00, 3.95, 3.89, 3.80, 3.60, 3.41, 3.30
+%   Ac (cm²): 105, 108, 109, 113, 125, 137, 150
+
+% Your goal is to compute the total mass of the rod numerically, without directly using the equation 
+% for mass, but by applying numerical integration methods as discussed in class.
+
+% 1. Conversion of Units:
+%   - First, convert the area (Ac) from cm² to m² to maintain consistent units across all calculations.
+%   - Convert the density (ρ) from g/m³ to kg/m³, since mass is desired in kilograms.
+
+% 2. Numerical Integration Methods:
+%   - Use one of the numerical integration techniques (like Trapezoidal, Simpson's Rule, or other methods 
+%     discussed in the lecture) to compute the integral, based on the given data points. 
+%   - Depending on the method, you may need to interpolate or apply the technique to unevenly spaced data points.
+
+% 3. Objective:
+%   - Compute the mass of the rod to the best possible accuracy using the provided data and numerical integration techniques.
+
+
 %% Question 2: Using trapizoidal method over the different intervals
 X = [0 2 3 4 6 8 10];
 p = [4.00 3.95 3.89 3.80 3.60 3.41 3.30];
@@ -513,6 +630,23 @@ end
 mass = mass * (10^-3);
 disp('Mass is equal to (Kg):')
 disp(mass)
+
+
+%Question 3
+
+% Solve the following system of differential equations using two different methods:
+% The system is defined by the equations:
+% dy/dx = -y + 5*exp(x)
+% dz/dx = -y*z^2
+
+% Initial conditions:
+% y(0) = 2
+% z(0) = 4
+
+% You are tasked with solving these equations over the range x = 0 to x = 0.4, using a step size of 0.1.
+% Use Euler's Method and the Midpoint Method to solve the system.
+
+
 
 %% Question 3: Part a
 
@@ -621,6 +755,29 @@ disp(S);
 
 
 %% Question 4
+
+
+% Problem:
+% You are tasked with simulating the motion of a 1-dimensional mass-spring system that only moves in the y-direction.
+% In this system, a 1 kg mass is suspended from the point [0,0] by a nonlinear spring with a damper in parallel. 
+% The spring force is proportional to the square of the displacement, while the damper force opposes the velocity.
+% The spring constant and damping coefficient are given, and gravity acts downward on the mass.
+
+% System parameters:
+% - Mass (m) = 1 kg
+% - Spring constant (k) = 9.8 N/m^2 (nonlinear spring)
+% - Damping coefficient (c) = 0.5 Ns/m (damper)
+% - Gravitational acceleration (g) = 9.8 m/s^2
+% - Time interval (t) = [0, 10] seconds
+% - Initial position: y(0) = +0.5 meters (mass is released from this height)
+% The total force acting on the mass is the sum of the spring force, damper force, and gravity:
+% F_total = F_spring + F_damper + F_gravity
+% Task:
+% You need to simulate the motion of this mass-spring system over the time interval t = [0, 10] seconds, where the mass is 
+% initially released from a height of +0.5 meters. The goal is to plot the position (y) of the mass over time.
+
+
+
 
 % Initial conditions: [initial position, initial velocity]
 x0 = [0.5, 0];  % Initial position is 0.5 m, initial velocity is 0 m/s
