@@ -35,4 +35,18 @@ Project 6:   -2D Regression Techniques:
                -Normal Equations Method
                -Inverse of Matrix Method
                -The Matlab Method
-
+Project 7:   -Different Optimization Techniques:
+               -Newton's Method
+               -Golden Search Method
+               -Radom Search Method
+Project 9:   -2D Optimization
+               -Built-in Matlab Functions
+               -Multi-objective Optimization Solver
+               -Weighted-sum Approach
+               -Pareto Plots & Interpretation
+             -Numerical Integration
+               -Solving First and Second Order Differential Equations
+               -Euler's Method
+               -Midpoint Method
+             -Solving a System of Differential Equations
+               
