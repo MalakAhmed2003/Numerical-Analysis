@@ -2,7 +2,7 @@
 clc
 clear all
 %%Question 1
-
+%%
 1. Taylor Series Expansion for Approximation:
 Given the function f(x)=−25x3+8x2+7x+20f(x) = -25x^3 + 8x^2 + 7x + 20f(x)=−25x3+8x2+7x+20, use the Taylor Series expansions of orders 0, 1, 2, and 3 to approximate f(−4.5)f(-4.5)f(−4.5) with a base point at x=−3x = -3x=−3. Calculate the true percent relative error ϵt\epsilon_tϵt​ for each approximation.
 2. Forward, Backward, and Centered Difference Approximations:
@@ -21,7 +21,7 @@ Evaluate and interpret the condition numbers for the following functions at the 
 (b) f(x)=e−xf(x) = e^{-x}f(x)=e−x for x=9x = 9x=9
 (c) f(x)=x2+1−xf(x) = \sqrt{x^2 + 1} - xf(x)=x2+1​−x for x=200x = 200x=200
 (d) f(x)=ex−1xf(x) = \frac{e^x - 1}{x}f(x)=xex−1​ for x=0.01x = 0.01x=0.01
-
+%%
 %%part1
 
 a = -3;
